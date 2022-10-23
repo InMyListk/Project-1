@@ -1,0 +1,232 @@
+/* === Start Glopal variables === */
+:root {
+    --main-color : #01b3e3;
+    --secondary-color: #15c26b;
+}
+/* === End Glopal variables === */
+/* === Start Glopal Rules === */
+* {
+    padding: 0;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.container {
+    padding-inline: 40px;
+    margin-inline: auto;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+p {
+    line-height: 2;
+    font-weight: 400;
+    font-size: 18px;
+    color: #444;
+}
+/* === Start making screen width for all devices ===*/
+/* Mobile Screen */
+@media (min-width: 768px){
+    .container{
+        width: 750px;
+    }
+}
+
+/* Tablet and bigger Mobile */
+
+@media (min-width: 992px){
+    .container{
+        width: 970px;
+    }
+}
+
+/* big tablets and Computers */
+
+@media (min-width: 1200px){
+    .container{
+        width: 1170px;
+    }
+}
+/*  End making screen width for all devices */
+/* === End Glopal Rules === */
+/* === Start General Rules === */
+.section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.section-width {
+    min-height: 100%;
+    max-width: 600px;
+}
+/* === End General Rules === */
+/* === Start Header === */
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+.header .container {
+    margin-inline: auto;
+}
+.header .container ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .container ul li {
+    position: relative;
+    cursor: pointer;
+}
+.header .container ul li:hover {
+    background-color: #efefef;
+}
+.header .container ul li::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    left: 0;
+    bottom: 0;
+    transition: 0.3s;
+    transform: scale(0,1);
+}
+.header .container ul li:hover::after {
+    transform: scale(1,1);
+}
+
+.header .container ul li {
+    display: block;
+    padding: 30px 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--main-color);
+}
+
+
+.header .container ul li span {
+    color: gray;
+}
+@media (max-width: 725px) {
+    .header .container ul li  {
+        font-size: 0.75rem;
+        padding: 20px 8px;
+    }
+}
+/* === End Header === */
+/* === Start Landing Page === */
+.landing-page {
+      padding-top: 150px;
+}
+.landing-page h1{
+    font-size: 6rem;
+    color: var(--main-color);
+}
+@media (max-width: 725px) {
+    .landing-page h1{
+        font-size: 4rem;
+    }
+}
+/* === End Landing Page === */
+/* === Start Sections === */
+.sections {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.sections p:nth-child(2){
+    padding-top: 50px;
+}
+.landing-page h3{
+    color:  #15c26b;
+    font-size: 50px;
+}
+.section-2 { 
+    margin-left: auto;
+    text-align: end;
+    position: relative;
+}
+.section-2::before {
+    content: '';
+    height: 100px;
+    display: block;
+    position: absolute;
+    width: 100px;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 0.6;
+    top: -50px;
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+.section-3 { 
+    position: relative;
+}
+.section-3::before {
+    content: '';
+    height: 100px;
+    display: block;
+    position: absolute;
+    width: 100px;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 0.6;
+    top: -50px;
+    right: 150px;
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+.section-4 { 
+    margin-left: auto;
+    text-align: end;
+}
+/* === End Sections === */
+/* === Start Footer === */
+.footer {
+    background-color: var(--main-color);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    color: white;
+    font-weight: bold;
+}
+.footer span{
+    margin-right: 10px;
+}
+/* === End Footer === */
+/* === Start top page button === */
+#Top-page {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    padding: 15px;
+    bottom: 30px;
+    border-radius: 50%;
+    background-color: #15c26b;
+    z-index: 5;
+}
+/* === End top page button === */
+/* === Start Animation === */ 
+@keyframes rotation {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
+/* === End Animation === */
+
