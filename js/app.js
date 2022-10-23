@@ -64,63 +64,101 @@ topPageBtn.addEventListener('click',topPage);
 
 let sectionContainer = document.querySelector('#section-container');
 
-const btnOne = document.createElement('li');
-const btnTwo =document.createElement('li');
-const btnThree = document.createElement('li');
-const btnFour = document.createElement('li');
+// const btnOne = document.createElement('li');
+// const btnTwo =document.createElement('li');
+// const btnThree = document.createElement('li');
+// const btnFour = document.createElement('li');
 
-let liContent = [btnOne, btnTwo, btnThree, btnFour];
+// let liContent = [btnOne, btnTwo, btnThree, btnFour];
+let sections2 = Array.from(document.querySelectorAll('.section-padding'))
 let count1 = 0;
 
-for (const i of liContent) {
+console.log(sections2)
+for (const i of sections2) {
+    let li = document.createElement('li');
     count1++
-    i.textContent = 'section';
-    i.classList.add('links');
+    li.textContent = 'section';
+    li.classList.add('links');
     let span = document.createElement('span');
     span.textContent = ' 0'+ count1
-    i.appendChild(span);
-    sectionContainer.appendChild(i);
+    li.appendChild(span);
+    sectionContainer.appendChild(li);
+    li.addEventListener('click', ()=>{
+        smoothScroll(1000);
+        
+    })
+    function smoothScroll(duration){
+        // var element = document.querySelector(element);
+        let elementPosition = i.getBoundingClientRect().top;
+        let startPosition = window.pageYOffset;
+        let startTime = 0;
+    
+        function scrollAnimation (currentTime) {
+            if(startTime === 0) startTime = currentTime;
+            let timeElapced = currentTime - startTime;
+            let easeFunction = ease(timeElapced, startPosition, elementPosition, duration)
+            window.scrollTo(0, easeFunction);
+            if(timeElapced < duration) requestAnimationFrame(scrollAnimation);
+        }
+    
+        function ease (t, b, c, d){
+            t /= d;
+            t--;
+            return c * Math.sqrt(1 - t*t) + b;
+        }
+        requestAnimationFrame(scrollAnimation);
+    }
 }
+
+// for (const i of liContent) {
+//     count1++
+//     i.textContent = 'section';
+//     i.classList.add('links');
+//     let span = document.createElement('span');
+//     span.textContent = ' 0'+ count1
+//     i.appendChild(span);
+//     sectionContainer.appendChild(i);
+// }
 
 // Making navigation elements go to the selected position
 
 // Used requestAnimationFrame and scrollTo methods !
 
-function smoothScroll(element,duration){
-    var element = document.querySelector(element);
-    let elementPosition = element.getBoundingClientRect().top;
-    let startPosition = window.pageYOffset;
-    let startTime = 0;
+// function smoothScroll(element,duration){
+//     var element = document.querySelector(element);
+//     let elementPosition = element.getBoundingClientRect().top;
+//     let startPosition = window.pageYOffset;
+//     let startTime = 0;
 
-    function scrollAnimation (currentTime) {
-        if(startTime === 0) startTime = currentTime;
-        let timeElapced = currentTime - startTime;
-        let easeFunction = ease(timeElapced, startPosition, elementPosition, duration)
-        window.scrollTo(0, easeFunction);
-        if(timeElapced < duration) requestAnimationFrame(scrollAnimation);
-    }
+//     function scrollAnimation (currentTime) {
+//         if(startTime === 0) startTime = currentTime;
+//         let timeElapced = currentTime - startTime;
+//         let easeFunction = ease(timeElapced, startPosition, elementPosition, duration)
+//         window.scrollTo(0, easeFunction);
+//         if(timeElapced < duration) requestAnimationFrame(scrollAnimation);
+//     }
 
-    function ease (t, b, c, d){
-        t /= d;
-	    t--;
-	    return c * Math.sqrt(1 - t*t) + b;
-    }
-    requestAnimationFrame(scrollAnimation);
-}
+//     function ease (t, b, c, d){
+//         t /= d;
+// 	    t--;
+// 	    return c * Math.sqrt(1 - t*t) + b;
+//     }
+//     requestAnimationFrame(scrollAnimation);
+// }
 
 
-btnOne.addEventListener('click', ()=>{
-    smoothScroll('#section-one', 1000);
-})
-btnTwo.addEventListener('click', ()=>{
-    smoothScroll('#section-two', 1000);
-})
-btnThree.addEventListener('click', ()=>{
-    smoothScroll('#section-three', 1000);
-})
-btnFour.addEventListener('click', ()=>{
-    smoothScroll('#section-four', 1000);
-})
+// btnOne.addEventListener('click', ()=>{
+//     smoothScroll('#section-one', 1000);
+// })
+// btnTwo.addEventListener('click', ()=>{
+//     smoothScroll('#section-two', 1000);
+// })
+// btnThree.addEventListener('click', ()=>{
+//     smoothScroll('#section-three', 1000);
+// })
+// btnFour.addEventListener('click', ()=>{
+//     smoothScroll('#section-four', 1000);
+// })
 
 // Set class active to sections when scroll to it
 
